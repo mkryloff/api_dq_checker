@@ -1,0 +1,20 @@
+CREATE TABLE IF NOT EXISTS currency_rates
+(
+	id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+	report_date TIMESTAMPTZ NOT NULL,
+	currency_code VARCHAR(3) NOT NULL,
+	rate NUMERIC(15, 2) NOT NULL,
+	processed_at TIMESTAMPTZ DEFAULT NOW(),
+	UNIQUE(report_date, currency_code)
+);
+
+CREATE TABLE IF NOT EXISTS dq_logs
+(
+	id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+	check_name VARCHAR(100) NOT NULL,
+	run_id VARCHAR(100) NOT NULL,
+	status VARCHAR(50) NOT NULL,
+	records_scanned INT NOT NULL,
+	bad_records_count INT NOT NULL,
+	comment TEXT
+);

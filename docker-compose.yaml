@@ -1,0 +1,49 @@
+version: '3.8'
+
+networks:
+  dq_platform_network:
+    driver: bridge
+
+services:
+  dwh_database:
+    image: postgres:17-alpine
+    container_name: dwh_postgres_container
+    environment:
+      POSTGRES_USER: dwh_user
+      POSTGRES_PASSWORD: dwh_password
+      POSTGRES_DB: core_dwh
+    ports:
+      - "5432:5432"
+    networks:
+      - dq_platform_network
+    volumes:
+      - pg_dwh_storage:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U dwh_user -d core_dwh"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  orchestrator:
+    image: apache/airflow:2.7.3-python3.10
+    container_name: airflow_orchestrator_container
+    command: standalone
+    environment:
+      - AIRFLOW__CORE__LOAD_EXAMPLES=False
+      - AIRFLOW__DATABASE__SQL_ALCHEMY_CONN=postgresql+psycopg2://dwh_user:dwh_password@dwh_database:5432/core_dwh
+      - AIRFLOW__CORE__EXECUTOR=LocalExecutor
+      - AIRFLOW__CORE__AIRFLOW_HOME=/opt/airflow
+    user: "50000:0"
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./dags:/opt/airflow/dags
+      - ./scripts:/opt/airflow/scripts
+    networks:
+      - dq_platform_network
+    depends_on:
+      dwh_database:
+        condition: service_healthy
+
+volumes:
+  pg_dwh_storage:
