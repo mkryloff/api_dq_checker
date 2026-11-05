@@ -39,8 +39,8 @@ class NullCheck(BaseDQCheck):
 
 class DuplicatesDQCheck(BaseDQCheck):
 
-    def __init__(self, check_name: str):
-        super().__init__(check_name)
+    def __init__(self):
+        super().__init__(check_name="duplicate_check")
 
     def run(self, df: pd.DataFrame, column: str, run_id: str) -> dict:
         records_scanned = len(df)
