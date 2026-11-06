@@ -5,9 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4ec771f9-196a-48b0-b8fd-812e12b3189b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/scripts/data_fetcher.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dags/currency_dq_pipeline.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/dq_core.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/dq_core.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/data_fetcher.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/data_fetcher.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,13 +26,13 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Python.data_fetcher.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python.data_fetcher.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Python.data_fetcher">
     <configuration name="data_fetcher" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="API_DQ_CHECKER" />
